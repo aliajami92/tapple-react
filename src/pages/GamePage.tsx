@@ -11,11 +11,13 @@ const keyboardLayout = [
   ["Z", "X", "C", "V", "B", "N", "M"],
 ];
 
+const TIMER = 10;
+
 const GamePage = () => {
   const { state }: Location<UseLocationState> = useLocation();
   const navigate = useNavigate();
 
-  const [timerValue, setTimerValue] = useState(state.selectedTimer);
+  const [timerValue, setTimerValue] = useState(TIMER);
   const [isActive, setIsActive] = useState(true);
   const [answer, setAnswer] = useState("");
   const [answerList, setAnswerList] = useState<string[]>([]);
@@ -25,7 +27,8 @@ const GamePage = () => {
   };
 
   useEffect(() => {
-    let timer: number;
+    let timer: NodeJS.Timeout;
+
     if (isActive && timerValue > 0) {
       timer = setInterval(() => {
         setTimerValue((prevTime) => prevTime - 1);
@@ -42,7 +45,7 @@ const GamePage = () => {
   }, [isActive, timerValue, navigate, answerList]);
 
   const resetTimer = () => {
-    setTimerValue(15);
+    setTimerValue(TIMER);
     setIsActive(true);
   };
 

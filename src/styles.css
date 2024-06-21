@@ -187,3 +187,16 @@ h1 {
   align-items: center;
   gap: 30px;
 }
+
+
+.players-container {
+  display: flex;
+}
+
+.player {
+  display: flex;
+  background-color: lightblue;
+  color: black;
+  border-radius: 8px;
+  padding: 16px;
+}
